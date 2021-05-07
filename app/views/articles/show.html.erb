@@ -2,10 +2,14 @@
 
 <p><%= @article.body %></p>
 
-<%= link_to "regresar", articles_path %>
+<br>
+<br>
+<ul>
+<li><%= link_to "regresar", articles_path %></li>
 
-<%= link_to "editar", edit_article_path(@article) %>
+<li><%= link_to "editar", edit_article_path(@article) %></li>
 
-<%= link_to "eliminar", article_path(@article),
+<li><%= link_to "eliminar", article_path(@article),
             method: :delete,
-            data: { confirm: "¿Estas seguro? :o "}%>
+            data: { confirm: "¿Estas seguro? :o "}%></li>
+</ul>
