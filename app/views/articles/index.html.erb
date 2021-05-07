@@ -3,12 +3,15 @@
 
 <h1>Articulos</h1>
 
+<%= link_to "nuevo articulo", new_article_path %>
+
 <ul>
   <% @articles.each do |article| %>
     <li>
-      <a href="/articles/<%= article.id %>">
-      <%= article.title %>
-      <!-- </a> -->
+      <%= link_to article.title, article_path(article) %>
+
     </li>
   <% end %>
 </ul>
+
+<%= link_to "regresa a home", root_path %>
