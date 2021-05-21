@@ -1,15 +1,18 @@
 <h1><%= @article.title %></h1>
-
 <p><%= @article.body %></p>
+<br>
 
-<br>
-<br>
+<h2><%= Comment.model_name.human.pluralize %></h2>
+<%= render @article.comments %>
+<%#= render collection: @article.comments, partial: "comments/comment" %>
+
+<h2>Add a comment:</h2>
+<%= render "comments/form" %>
+
 <ul>
-<li><%= link_to "regresar", articles_path %></li>
-
-<li><%= link_to "editar", edit_article_path(@article) %></li>
-
-<li><%= link_to "eliminar", article_path(@article),
+  <li><%= link_to "regresar", articles_path %></li>
+  <li><%= link_to "editar", edit_article_path(@article) %></li>
+  <li><%= link_to "eliminar", article_path(@article),
             method: :delete,
             data: { confirm: "¿Estas seguro? :o "}%></li>
 </ul>
