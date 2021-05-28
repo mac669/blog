@@ -3,12 +3,15 @@
 
 <h1>Articulos</h1>
 
+Our blog has <%= Article.public_count %> articles and counting!
+
 <ul>
   <% @articles.each do |article| %>
     <li>
-      <a href="/articles/<%= article.id %>">
-      <%= article.title %>
-      <!-- </a> -->
+      <%= link_to "#{article.title} [#{article.status}]", article %>
     </li>
   <% end %>
 </ul>
+
+<%= link_to "nuevo articulo", new_article_path %>
+<%= link_to "regresa a home", root_path %>
