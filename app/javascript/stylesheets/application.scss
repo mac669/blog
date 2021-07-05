@@ -1,0 +1,9 @@
+// @import "tailwindcss/base";
+// @import "tailwindcss/components";
+// @import "tailwindcss/utilities";
+@import "~bulma/bulma";
+
+.centrar-elemento-con-flex {
+  justify-content: center;
+  flex-grow: 1;
+}
