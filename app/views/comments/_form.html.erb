@@ -1,17 +1,40 @@
-<%= form_with model: [@article, @article.comments.build] do |form| %>
-  <p>
-    <%= form.label :commenter %><br>
-    <%= form.text_field :commenter %>
-  </p>
-  <div>
-    <%= form.label :status %><br>
+<%= form_with model: [@article, @comment] do |form| %>
+<div class="field">
+  <div class="control">
+
+      <label class="label font-effect-anaglyph"><%= form.label :commenter %></label>
+      <%= form.text_field :commenter, class: "input #{"is-danger" if @comment.errors.key?(:commenter)}" %>
+      <% @comment.errors.full_messages_for(:commenter).each do |message| %>
+      <p class="help is-danger"><%= message %></p>
+      <% end %>
+
+  </div>
+</div>
+
+<%= form.label :status, class:"label font-effect-anaglyph" %>
+<div class="control">
+  <div class="select is-fullwidth">
     <%= form.select :status, ['public', 'private', 'archived'], selected: 'public' %>
   </div>
-  <p>
-    <%= form.label :body %><br>
-    <%= form.text_area :body %>
-  </p>
-  <p>
-    <%= form.submit %>
-  </p>
+</div>
+
+<p>
+  <div class="field">
+    <%= form.label :body, class:"label font-effect-anaglyph" %>
+    <div class="control">
+      <%= form.text_area :body, class:"textarea #{"is-danger" if @comment.errors.key?(:body)}" %>
+      <% @comment.errors.full_messages_for(:body).each do |message| %>
+      <p class="help is-danger"><%= message %></p>
+      <% end %>
+
+    </div>
+  </div>
+</p>
+<p>
+  <div class="field is-grouped">
+    <div class="control">
+  <%= form.submit class: "button is-link"%>
+    </div>
+  </div>
+</p>
 <% end %>

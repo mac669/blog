@@ -1,8 +1,1 @@
 en:
-  activerecord:
-    models:
-      comment: Comentario
-    attributes:
-      comment:
-        body: "Mensaje"
-        commenter: "Usuario"

@@ -1,13 +1,22 @@
 class CommentsController < ApplicationController
 
-  http_basic_authenticate_with name: "dhh", password: "secret", only: :destroy
+  #http_basic_authenticate_with name: "dhh", password: "secret", only: :destroy
+  before_action :authenticate_user!
 
   def create
     find_article
 
-    @comment = @article.comments.create(comment_params)
+    @comment = Comment.new(comment_params.merge(article_id: @article.id))
 
-    redirect_to article_path(@article)
+        if @comment.save
+          redirect_to article_path(@article)
+        else
+          render "articles/show"
+        end
+
+    # @comment = @article.comments.create(comment_params)
+# binding.irb
+#     redirect_to article_path(@article)
   end
 
   def destroy

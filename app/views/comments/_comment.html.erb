@@ -1,15 +1,18 @@
-<p>
-  <strong><%= Comment.human_attribute_name(:commenter) %></strong>
-  <%= comment.commenter %>
-</p>
+<%= link_to 'Destroy Comment', [comment.article, comment],
+method: :delete, class:"delete is-pulled-right",
+data: { confirm: "Are you sure?" } %>
 
-<p>
-  <strong><%= Comment.human_attribute_name(:body) %></strong>
-  <%= comment.body %>
-</p>
+<div class="message radio-border is-info">
 
-<p>
-  <%= link_to 'Destroy Comment', [comment.article, comment],
-              method: :delete,
-              data: { confirm: "Are you sure?" } %>
-</p>
+  <div class="column">
+    <div class="font-effect-anaglyph">
+      <p>
+        <strong><%= comment.commenter %></strong>
+      </p>
+    </div>
+
+    <!-- <strong><%= Comment.human_attribute_name(:body) %></strong> -->
+    <%= comment.body %>
+
+  </div>
+</div>

@@ -1,18 +1,27 @@
-<h1><%= @article.title %></h1>
-<p><%= @article.body %></p>
-<br>
+<div class="columns mt-6">
+  <div class="column  ">
 
-<h2><%= Comment.model_name.human.pluralize %></h2>
-<%= render @article.comments %>
-<%#= render collection: @article.comments, partial: "comments/comment" %>
+    <h1 class="title font-effect-anaglyph  has-text-centered"><%= @article.title %></h1>
+    <p class="has-text-weight-medium  has-text-centered"><%= @article.body %></p>
 
-<h2>Add a comment:</h2>
-<%= render "comments/form" %>
+    <div class="colum has-text-centered	mt-6">
+      <%= link_to "editar", edit_article_path(@article), class: "button is-link is-outlined" %>
+      <%= link_to "regresar", articles_path, class: "button is-link is-outlined" %>
+      <%= link_to "eliminar", article_path(@article), class: "button is-link is-outlined",
+        method: :delete,
+        data: { confirm: "¿Estas seguro? :o "}%>
 
-<ul>
-  <li><%= link_to "regresar", articles_path %></li>
-  <li><%= link_to "editar", edit_article_path(@article) %></li>
-  <li><%= link_to "eliminar", article_path(@article),
-            method: :delete,
-            data: { confirm: "¿Estas seguro? :o "}%></li>
-</ul>
+    </div>
+  </div>
+
+  <div class="column" style="margin: 10px 0 0 200px;">
+
+    <h2 class="font-effect-anaglyph has-text-centered"><%= Comment.model_name.human.pluralize %></h2>
+    <%= render @article.comments %>
+
+    <%#= render collection: @article.comments, partial: "comments/comment" %>
+    <br>
+    <h2 class="font-effect-anaglyph">Add a comment:</h2>
+    <%= render "comments/form" %>
+  </div>
+</div>
